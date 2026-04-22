@@ -5,6 +5,14 @@ import com.dmb25.blogpostapp.data.remote.dto.PostDto
 import com.dmb25.blogpostapp.domain.model.Post
 
 
+
+fun PostDto.toEntity() = PostEntity(
+    userId = userId,
+    id = id,
+    title = title,
+    body = body
+)
+
 fun PostDto.toDomain() = Post(
     userId = userId,
     id = id,
@@ -14,6 +22,13 @@ fun PostDto.toDomain() = Post(
 
 
 fun Post.toEntity() = PostEntity(
+    userId = userId,
+    id = id,
+    title = title,
+    body = body
+)
+
+fun Post.toDto() = PostDto(
     userId = userId,
     id = id,
     title = title,

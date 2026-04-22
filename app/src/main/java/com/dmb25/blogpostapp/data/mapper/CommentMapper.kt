@@ -5,6 +5,15 @@ import com.dmb25.blogpostapp.data.remote.dto.CommentDto
 import com.dmb25.blogpostapp.domain.model.Comment
 
 
+
+fun CommentDto.toEntity() = CommentEntity(
+    postId = postId,
+    id = id,
+    name = name,
+    email = email,
+    body = body
+)
+
 fun CommentDto.toDomain() = Comment(
     postId = postId,
     id = id,
