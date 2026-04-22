@@ -3,7 +3,6 @@ package com.dmb25.blogpostapp.data.mapper
 import com.dmb25.blogpostapp.data.local.entity.UserEntity
 import com.dmb25.blogpostapp.data.remote.dto.UserDto
 import com.dmb25.blogpostapp.domain.model.User
-import kotlin.Int
 
 
 fun UserDto.toDomain() = User(
@@ -25,6 +24,15 @@ fun User.toEntity() = UserEntity(
 )
 
 fun UserEntity.toDomain() = User(
+    id = id,
+    name = name,
+    email = email,
+    username = username,
+    phone = phone,
+    website = website
+)
+
+fun UserDto.toEntity() = UserEntity(
     id = id,
     name = name,
     email = email,
