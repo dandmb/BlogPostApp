@@ -91,7 +91,13 @@ dependencies {
     androidTestImplementation("io.mockk:mockk-android:1.13.13")
     androidTestImplementation(libs.mockk.android)
 
-    // Kotlinx Serialization
     implementation(libs.kotlinx.serialization.json)
+
+
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.client.serialization)
+    implementation(libs.ktor.client.logging)
 
 }
