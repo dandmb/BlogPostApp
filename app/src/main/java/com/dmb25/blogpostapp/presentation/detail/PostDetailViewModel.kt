@@ -22,7 +22,6 @@ import kotlinx.coroutines.launch
 class PostDetailViewModel(
     private val savedStateHandle: SavedStateHandle,
     private val updatePostUseCase: UpdatePostUseCase,
-    private val getPostByIdUseCase: GetPostByIdUseCase,
     private val getPostWithCommentsUseCase: GetPostWithCommentsUseCase
 ) : ViewModel() {
     private val postId: Int = checkNotNull(
@@ -49,21 +48,11 @@ class PostDetailViewModel(
 
     }
 
-    fun updatePost() {
+    fun updatePost(post: Post) {
         viewModelScope.launch {
-            try {
-                getPostByIdUseCase(postId).collect { post ->
-                    if (post != null) {
-                        updatePostUseCase(post)
-                            .onSuccess { _event.emit(PostEvent.PostUpdated) }
-                            .onFailure { _event.emit(PostEvent.Error(it.message ?: "Erreur")) }
-                    } else {
-                        _event.emit(PostEvent.Error("Erreur"))
-                    }
-                }
-            } catch (e: Exception) {
-                _event.emit(PostEvent.Error(e.message ?: "Erreur"))
-            }
+            updatePostUseCase(post)
+                .onSuccess { _event.emit(PostEvent.PostUpdated) }
+                .onFailure { _event.emit(PostEvent.Error(it.message ?: "Erreur")) }
         }
     }
 
