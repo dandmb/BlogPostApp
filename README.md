@@ -33,6 +33,18 @@ A modern Android application built to demonstrate **Clean Architecture**, **MVVM
 -   **Image Loading:** (Coil)
 -   **Navigation:** [Compose Navigation](https://developer.android.com/jetpack/compose/navigation)
 
+## 🧪 Testing
+
+The project includes unit tests for different layers:
+- **Mappers:** Ensuring correct data transformation between DTOs, Entities, and Domain models.
+- **Use Cases:** Testing business logic in isolation.
+- **ViewModels:** Testing UI state management and search filtering using **Turbine** and **MockK**.
+
+To run the unit tests, use the following Gradle command:
+```bash
+./gradlew test
+```
+
 ## 🏗 Architecture
 
 The project is structured following Clean Architecture principles:
