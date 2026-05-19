@@ -7,10 +7,7 @@ import com.dmb25.blogpostapp.domain.model.Post
 import com.dmb25.blogpostapp.domain.model.User
 import com.dmb25.blogpostapp.domain.usecase.posts.CreatePostUseCase
 import com.dmb25.blogpostapp.domain.usecase.posts.DeletePostUseCase
-import com.dmb25.blogpostapp.domain.usecase.posts.GetPostByIdUseCase
-import com.dmb25.blogpostapp.domain.usecase.posts.GetPostsByUserUseCase
 import com.dmb25.blogpostapp.domain.usecase.posts.GetUserWithPostsUseCase
-import com.dmb25.blogpostapp.domain.usecase.posts.UpdatePostUseCase
 import com.dmb25.blogpostapp.presentation.events.PostEvent
 import com.dmb25.blogpostapp.presentation.ui.UiState
 import kotlinx.coroutines.FlowPreview
@@ -37,9 +34,9 @@ class PostsViewModel(
     private val getUserWithPostsUseCase: GetUserWithPostsUseCase
 ) : ViewModel() {
 
-    private val userId: Int = checkNotNull(
-        savedStateHandle.get<String>("userId")
-    ).toInt()
+    val userId: Int = checkNotNull(
+        savedStateHandle.get<Int>("userId")
+    )
 
     private val _uiState = MutableStateFlow<UiState<Pair<User?, List<Post>>>>(UiState.Idle)
     val uiState: StateFlow<UiState<Pair<User?, List<Post>>>> = _uiState.asStateFlow()
@@ -58,7 +55,6 @@ class PostsViewModel(
         _searchQuery
             .debounce(300)
             .distinctUntilChanged()
-            .filter { it.length >= 2 }
     ) { state, query ->
         when (state) {
             is UiState.Success -> {
