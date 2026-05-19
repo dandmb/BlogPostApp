@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dmb25.blogpostapp.domain.model.Comment
 import com.dmb25.blogpostapp.domain.model.Post
-import com.dmb25.blogpostapp.domain.usecase.posts.GetPostByIdUseCase
 import com.dmb25.blogpostapp.domain.usecase.posts.GetPostWithCommentsUseCase
 import com.dmb25.blogpostapp.domain.usecase.posts.UpdatePostUseCase
 import com.dmb25.blogpostapp.presentation.events.PostEvent
@@ -24,9 +23,9 @@ class PostDetailViewModel(
     private val updatePostUseCase: UpdatePostUseCase,
     private val getPostWithCommentsUseCase: GetPostWithCommentsUseCase
 ) : ViewModel() {
-    private val postId: Int = checkNotNull(
-        savedStateHandle.get<String>("postId")
-    ).toInt()
+    val postId: Int = checkNotNull(
+        savedStateHandle.get<Int>("postId")
+    )
 
     private val _uiState = MutableStateFlow<UiState<Pair<Post?, List<Comment>>>>(UiState.Idle)
     val uiState: StateFlow<UiState<Pair<Post?, List<Comment>>>> = _uiState.asStateFlow()

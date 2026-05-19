@@ -3,7 +3,6 @@ package com.dmb25.blogpostapp.presentation.users
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dmb25.blogpostapp.domain.model.User
-import com.dmb25.blogpostapp.domain.usecase.users.GetUserByIdUseCase
 import com.dmb25.blogpostapp.domain.usecase.users.GetUsersUseCase
 import com.dmb25.blogpostapp.presentation.ui.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,9 +17,6 @@ class UsersViewModel(
     private val _uiState = MutableStateFlow<UiState<List<User>>>(UiState.Idle)
     val uiState: StateFlow<UiState<List<User>>> = _uiState.asStateFlow()
 
-    init {
-        loadUsers()
-    }
 
     fun loadUsers() {
         viewModelScope.launch {
