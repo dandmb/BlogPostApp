@@ -2,6 +2,14 @@
 
 A modern Android application built to demonstrate **Clean Architecture**, **MVVM**, and the latest **Jetpack Compose** components. The app fetches data from the JSONPlaceholder API and provides a seamless user experience for browsing users, posts, and comments.
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="screenshots/users_list.png" width="250" alt="Users List" />
+  <img src="screenshots/posts_list.png" width="250" alt="Posts List" />
+  <img src="screenshots/post_detail.png" width="250" alt="Post Detail" />
+</p>
+
 ## 🚀 Features
 
 -   **User Directory:** Browse a list of users fetched from the API.
@@ -40,7 +48,4 @@ This app uses the [JSONPlaceholder](https://jsonplaceholder.typicode.com/) API:
 -   `/users`: Fetch user list.
 -   `/posts?userId={id}`: Fetch posts for a specific user.
 -   `/comments?postId={id}`: Fetch comments for a specific post.
-
-## 📸 Screenshots
-
 ---
